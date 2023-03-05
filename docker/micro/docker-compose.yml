@@ -3,8 +3,6 @@ version: "3.0"
 services:
 
   api:
-    build:
-      context: ../..
     image: wradgio/stretchshop:latest
     env_file: docker-compose.env
     environment:
@@ -154,11 +152,10 @@ services:
       - ./dbconf:/etc/mongo
     ports:
       - "27017:27017"
-    command: mongod --auth
 
   nats-server:
-    image: nats
-    entrypoint: "/gnatsd -D --user defaultUsername --pass defaultPassword" # -D debug , -V trace
+    image: bitnami/nats
+    entrypoint: "nats-server -D --user yourNATSname --pass yourNATSpassword" # -D debug , -V trace
     ports:
       - "4222:4222"
 

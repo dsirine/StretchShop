@@ -3,8 +3,6 @@ version: "3.0"
 services:
 
   stretchshop:
-    build:
-      context: ../..
     image: wradgio/stretchshop:latest
     env_file: docker-compose.env
     environment:
@@ -42,8 +40,8 @@ services:
       - "27017:27017"
 
   nats-server:
-    image: nats
-    entrypoint: "/gnatsd -D --user defaultUsername --pass defaultPassword" # -D debug , -V trace
+    image: bitnami/nats
+    entrypoint: "nats-server -D --user yourNATSname --pass yourNATSpassword" # -D debug , -V trace
     ports:
       - "4222:4222"
 
