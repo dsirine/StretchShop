@@ -13,13 +13,18 @@ pipeline {
           docker info
           docker compose version
           curl --version
-        '''
-        
+        '''  
        }
     }
-    stage('Test') {
+    stage('Start containers') {
       steps {
         sh 'docker-compose up'
+        sh 'docker-compose ps'
+      }
+    }
+    stage('Run tests again the container') {
+      steps {
+        sh 'curl http://localhost:3000'
       }
     }
   }
