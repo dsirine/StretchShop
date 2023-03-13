@@ -8,8 +8,8 @@ pipeline {
     }
     stage('Build') {
        steps {
-        sh 'ls && cd docker/micro'
         sh 'ls'
+        sh 'docker-compose up'
        }
     }
     stage('Test') {
