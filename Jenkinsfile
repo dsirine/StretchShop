@@ -1,7 +1,4 @@
 pipeline {
-  environment {
-    PATH = "$PATH:/usr/local/bin"
-  }
   agent any
   stages {
     stage('Cloning Git') {
@@ -9,10 +6,15 @@ pipeline {
         git 'https://github.com/dsirine/StretchShop.git'
       }
     }
-    stage('Build') {
+    stage('Verify tooling') {
        steps {
-        echo "PATH is: $PATH"
-        sh '/usr/local/bin/docker-compose up'
+        sh '''
+          docker version
+          docker info
+          docker compose version
+          curl --version
+        '''
+        
        }
     }
     stage('Test') {
