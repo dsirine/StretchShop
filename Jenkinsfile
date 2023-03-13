@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build') {
        steps {
-        sh 'cd docker/micro'
+        sh 'ls && cd docker/micro'
         sh 'ls'
        }
     }
