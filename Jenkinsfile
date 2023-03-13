@@ -8,7 +8,9 @@ pipeline {
     }
     stage('Build') {
        steps {
-         sh 'cd docker/micro'
+        sh 'cd docker'
+        sh 'cd micro'
+        sh 'cat docker-compose.yml'
        }
     }
     stage('Test') {
