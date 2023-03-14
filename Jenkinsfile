@@ -19,8 +19,8 @@ pipeline {
     }
     stage('Start containers') {
       steps {
-        sh 'docker compose up'
-        sh 'docker compose ps'
+        sh 'docker-compose up'
+        sh 'docker-compose ps'
       }
     }
     stage('Run tests again the container') {
