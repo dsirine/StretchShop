@@ -13,18 +13,19 @@ pipeline {
           docker info
           docker compose version
           curl --version
+          jq --version
         '''  
        }
     }
     stage('Start containers') {
       steps {
-        sh 'docker-compose up'
-        sh 'docker-compose ps'
+        sh 'docker compose up'
+        sh 'docker compose ps'
       }
     }
     stage('Run tests again the container') {
       steps {
-        sh 'curl http://localhost:3000'
+        sh 'curl http://localhost:3000/param?query=demo | jq'
       }
     }
   }
