@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  namespace: project
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: project.formation-datascientest.cloudns.ph
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+             service:
+              name: {{ .Release.Name }}-svc
+              port:
+                number: {{ .Values.service.port }}

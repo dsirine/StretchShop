@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: wradgio
+  name: stretchshop
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 3000
